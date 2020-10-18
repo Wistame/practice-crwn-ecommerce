@@ -4,6 +4,10 @@ import './App.css'
 
 import {Route, Switch} from 'react-router-dom'
 
+import ShopPage from './pages/shopPage/ShopPage'
+import Header from './components/Header/Header.jsx'
+import SignInSignUp from './pages/SignInSignUpPage/SignInSignUp';
+
 
 
 
@@ -11,11 +15,13 @@ import {Route, Switch} from 'react-router-dom'
 function App() {
   return (
     <div >  
+      <Header />
       <Switch>
-       <Route exact path='/hats' component={HomePage}/>
+      <Route exact path='/' component={HomePage}/>
        <Route exact path='/home' component={HomePage}/>
-       <Route exact path='/' component={HomePage}/>
-        </Switch>
+       <Route exact path='/shop' component={ShopPage}/>
+       <Route exact path='/signin' component={SignInSignUp} />
+      </Switch>
     </div>
   );
 }
