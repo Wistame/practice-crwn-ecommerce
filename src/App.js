@@ -5,7 +5,7 @@ import './App.css'
 import {Route, Switch} from 'react-router-dom'
 import HatsPage from './pages/HatsPage/HatsPage'
 import ShopPage from './pages/shopPage/ShopPage'
-
+import Header from './components/Header/Header.jsx'
 
 
 
@@ -14,6 +14,7 @@ import ShopPage from './pages/shopPage/ShopPage'
 function App() {
   return (
     <div >  
+      <Header />
       <Switch>
       <Route exact path='/' component={HomePage}/>
        <Route exact path='/shop/hats' component={HatsPage}/>
