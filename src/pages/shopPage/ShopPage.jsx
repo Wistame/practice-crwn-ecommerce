@@ -6,7 +6,7 @@ import CollectionPreview from '../../components/preview-collection/CollectionPre
 
 const ShopPage = () =>{
 
-    const  [collection, setCollection ] = useState(SHOP_DATA);
+    const  [collection ] = useState(SHOP_DATA);
     return (
     <div className='shop-page'> {
     collection.map(({id, ...otherCollectionProps}) =>(

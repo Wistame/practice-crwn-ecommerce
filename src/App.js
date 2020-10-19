@@ -7,7 +7,7 @@ import {Route, Switch} from 'react-router-dom'
 import ShopPage from './pages/shopPage/ShopPage'
 import Header from './components/Header/Header.jsx'
 import SignInSignUp from './pages/SignInSignUpPage/SignInSignUp';
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 
 
@@ -18,13 +18,22 @@ const  App = () =>  {
 
 
  useEffect(() => {
-
-  
-  auth.onAuthStateChanged(user => {
-    setCurrentUser(user);
-    console.log(user);
-  }) 
-}, [])
+  auth.onAuthStateChanged(async userAuth => {
+ if(userAuth){
+   const userRef = await createUserProfileDocument(userAuth);
+   userRef.onSnapshot(snapShot =>{
+     
+    setCurrentUser({
+      id: snapShot.id,
+       ...snapShot.data()
+      })
+      
+   })
+ }else{
+  setCurrentUser(()=>({currentUser: userAuth}))  
+ }
+}) 
+})
 
 
 
